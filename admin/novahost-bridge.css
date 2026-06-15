@@ -1,0 +1,126 @@
+/* ============================================================
+   NovaHost re-skin bridge for the Ops Console
+   ------------------------------------------------------------
+   The console was authored against Lull token names (--teal-*,
+   --coral-*, --color-*, --font-sans, --elevation-*). This sheet
+   remaps every one of those names to NovaHost Design System
+   values (royal purple #673DE6 on meteorite navy, DM Sans,
+   cool neutrals) so the entire app adopts NovaHost visually
+   without touching component markup.
+
+   Loaded LAST in <head> so these :root overrides win the cascade.
+   Literal hex is used (not var()) to be independent of token
+   load order between the two design systems.
+   ============================================================ */
+
+:root {
+  /* ---- Brand: Deep Teal → Royal Purple --------------------- */
+  --teal-900: #2F1C6A;   /* meteorite — darkest fills */
+  --teal-800: #45269F;
+  --teal-700: #673DE6;   /* PRIMARY — royal purple */
+  --teal-600: #7E5BEA;
+  --teal-500: #9479EB;
+  --teal-300: #B9A3F2;
+  --teal-200: #D6C8F9;
+  --teal-100: #EBE5FC;
+  --teal-50:  #F4F1FE;
+
+  /* ---- Accent: Soft Coral → NovaHost warm coral ------------ */
+  --coral-700: #E5402C;
+  --coral-600: #F2562F;
+  --coral-500: #FF7A59;
+  --coral-300: #FFAA8F;
+  --coral-200: #FFC9BA;
+  --coral-100: #FFE2D8;
+  --coral-50:  #FFF3EF;
+
+  /* ---- Semantic: Crimson → Red ----------------------------- */
+  --crimson-700: #9E2417;
+  --crimson-600: #BC2C1C;
+  --crimson-500: #E5402C;
+  --crimson-100: #F9CFCB;
+
+  /* ---- Semantic: Mint → Green ------------------------------ */
+  --mint-600: #128043;
+  --mint-500: #18A957;
+  --mint-100: #C2EBD8;
+
+  /* ---- Semantic: Amber (kept warm, NovaHost amber) --------- */
+  --amber-600: #C97F10;
+  --amber-500: #F5A623;
+  --amber-400: #F8B84E;
+  --amber-100: #FCE7BB;
+  --amber-50:  #FFF6E5;
+
+  /* ---- Neutrals → NovaHost cool grays (hint of purple) ----- */
+  --white:     #FFFFFF;
+  --off-white: #FAFAFD;
+  --gray-100:  #F3F3F8;
+  --gray-200:  #E8E8F0;
+  --gray-300:  #D6D6E1;
+  --gray-400:  #AEAEC0;
+  --gray-500:  #7E7E96;
+  --gray-600:  #5C5C73;
+  --gray-800:  #272735;
+  --charcoal:  #1E1147;  /* primary text — cool meteorite-dark */
+
+  /* ---- Semantic aliases ------------------------------------ */
+  --color-primary:        #673DE6;
+  --color-primary-hover:  #5630CE;
+  --color-primary-press:  #45269F;
+  --color-primary-soft:   #F4F1FE;
+  --color-primary-tint:   #EBE5FC;
+  --color-on-primary:     #FFFFFF;
+
+  --color-accent:         #FF7A59;
+  --color-accent-hover:   #F2562F;
+  --color-accent-press:   #E5402C;
+  --color-accent-soft:    #FFF3EF;
+  --color-on-accent:      #FFFFFF;
+
+  --color-success:        #18A957;
+  --color-success-soft:   #E6F7EF;
+  --color-error:          #E5402C;
+  --color-error-hover:    #BC2C1C;
+  --color-error-soft:     #FDECEA;
+  --color-warning:        #F5A623;
+  --color-warning-soft:   #FFF6E5;
+
+  --color-bg:             #FAFAFD;
+  --surface:              #FFFFFF;
+  --surface-sunken:       #F3F3F8;
+  --color-border:         #E8E8F0;
+  --color-border-strong:  #D6D6E1;
+
+  --text-primary:         #1E1147;
+  --text-secondary:       #5C5C73;
+  --text-tertiary:        #7E7E96;
+  --text-on-dark:         #FFFFFF;
+  --text-link:            #673DE6;
+
+  --color-focus-ring:     #9479EB;
+  --color-disabled-bg:    #E8E8F0;
+  --color-disabled-fg:    #AEAEC0;
+
+  /* ---- Type: Plus Jakarta → DM Sans ------------------------ */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
+
+  /* ---- Elevation → NovaHost cool purple-tinted shadows ----- */
+  --elevation-1: 0 2px 6px rgba(31,17,71,.07);
+  --elevation-2: 0 6px 18px rgba(31,17,71,.10);
+  --elevation-3: 0 14px 34px rgba(31,17,71,.16);
+  --ring: 0 0 0 4px rgba(103,61,230,.28);
+
+  /* ---- Console-local chrome -------------------------------- */
+  --console-bg: #F4F2FB;   /* faint cool purple page wash */
+  --ink-soft: #5C5C73;
+  --soft-sh-h: 0 2px 6px rgba(31,17,71,.08);
+}
+
+/* Mono numerals across the console pick up DM Mono */
+.mono { font-family: var(--font-mono); }
+
+/* Scrollbar tint → cool purple-gray */
+::-webkit-scrollbar-thumb { background: #DCD9EC; }
+::-webkit-scrollbar-thumb:hover { background: #C7C2E0; }

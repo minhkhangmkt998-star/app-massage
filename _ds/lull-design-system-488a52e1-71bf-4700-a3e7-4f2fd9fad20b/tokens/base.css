@@ -1,0 +1,62 @@
+/* ============================================================
+   Lull — Base layer
+   Element resets + typography utility classes built on tokens.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-1);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Type ramp utilities ------------------------------------- */
+.t-display {
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+.t-hero {
+  font-size: var(--text-hero);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+.t-h2 {
+  font-size: var(--text-h2);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+.t-body-1 {
+  font-size: var(--text-body-1);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+}
+.t-body-2 {
+  font-size: var(--text-body-2);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+.t-caption {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+}
+.t-overline {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+a { color: var(--text-link); text-decoration: none; }

@@ -1,0 +1,31 @@
+/* ============================================================
+   Lull — Spacing, radii & layout (8pt grid)
+   ============================================================ */
+
+:root {
+  /* 8pt spacing scale */
+  --space-2xs: 2px;
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Corner radii */
+  --radius-sm:   8px;  /* buttons, inputs, chips inner */
+  --radius-md:   12px; /* nested cards, list rows */
+  --radius-lg:   16px; /* large cards, modals — friendly, soft */
+  --radius-pill: 999px;/* chips, tags, avatars */
+  --radius-full: 50%;
+
+  /* Common control sizing */
+  --control-height:    48px; /* thumb-friendly primary control */
+  --control-height-sm: 36px;
+  --tap-target-min:    44px; /* WCAG / iOS minimum */
+
+  /* App layout */
+  --app-max-width: 420px; /* mobile design width */
+  --bottom-nav-height: 64px;
+}

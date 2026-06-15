@@ -1,0 +1,88 @@
+/* ============================================================
+   Lull — Color tokens
+   Brand balances Spa calm (Deep Teal) with a warm, human
+   accent (Soft Coral). Neutrals are cool off-whites.
+   ============================================================ */
+
+:root {
+  /* ---- Brand scale: Deep Teal ------------------------------ */
+  --teal-900: #06303D;
+  --teal-800: #084556;
+  --teal-700: #0D5C75; /* PRIMARY — trust, healing, calm */
+  --teal-600: #15728E;
+  --teal-500: #2E8DAB;
+  --teal-300: #8FC4D6;
+  --teal-100: #DDEBF1;
+  --teal-50:  #EFF6F9;
+
+  /* ---- Accent scale: Soft Coral --------------------------- */
+  --coral-700: #E2543A;
+  --coral-600: #F76A4F;
+  --coral-500: #FF7E67; /* SECONDARY — badges, surge, gamification */
+  --coral-300: #FFB3A4;
+  --coral-100: #FFE4DE;
+  --coral-50:  #FFF2EF;
+
+  /* ---- Semantic hues -------------------------------------- */
+  --mint-600:  #1E9E6A;
+  --mint-500:  #2BBE83; /* Success / Booking confirmed */
+  --mint-100:  #D6F4E7;
+  --crimson-600: #C42B3A;
+  --crimson-500: #E03E4E; /* Error / SOS */
+  --crimson-100: #FBDCDF;
+  --amber-600: #D98A06;
+  --amber-500: #F5A524; /* Warning */
+  --amber-100: #FDEBCC;
+
+  /* ---- Neutrals ------------------------------------------- */
+  --white:     #FFFFFF;
+  --off-white: #F8F9FA;
+  --gray-100:  #F1F3F5;
+  --gray-200:  #E9ECEF; /* Borders / dividers */
+  --gray-300:  #DEE2E6;
+  --gray-400:  #CED4DA;
+  --gray-500:  #ADB5BD;
+  --gray-600:  #6C757D; /* Text secondary — slate */
+  --gray-800:  #343A40;
+  --charcoal:  #1A1A1A; /* Text primary */
+
+  /* ========================================================
+     Semantic aliases — reference these in components
+     ======================================================== */
+  --color-primary:        var(--teal-700);
+  --color-primary-hover:  var(--teal-800);
+  --color-primary-press:  var(--teal-900);
+  --color-primary-soft:   var(--teal-50);
+  --color-primary-tint:   var(--teal-100);
+  --color-on-primary:     var(--white);
+
+  --color-accent:         var(--coral-500);
+  --color-accent-hover:   var(--coral-600);
+  --color-accent-press:   var(--coral-700);
+  --color-accent-soft:    var(--coral-50);
+  --color-on-accent:      var(--white);
+
+  --color-success:        var(--mint-500);
+  --color-success-soft:   var(--mint-100);
+  --color-error:          var(--crimson-500);
+  --color-error-hover:    var(--crimson-600);
+  --color-error-soft:     var(--crimson-100);
+  --color-warning:        var(--amber-500);
+  --color-warning-soft:   var(--amber-100);
+
+  --color-bg:             var(--off-white);
+  --surface:              var(--white);
+  --surface-sunken:       var(--gray-100);
+  --color-border:         var(--gray-200);
+  --color-border-strong:  var(--gray-300);
+
+  --text-primary:         var(--charcoal);
+  --text-secondary:       var(--gray-600);
+  --text-tertiary:        var(--gray-500);
+  --text-on-dark:         var(--white);
+  --text-link:            var(--teal-700);
+
+  --color-focus-ring:     var(--teal-500);
+  --color-disabled-bg:    var(--gray-200);
+  --color-disabled-fg:    var(--gray-500);
+}

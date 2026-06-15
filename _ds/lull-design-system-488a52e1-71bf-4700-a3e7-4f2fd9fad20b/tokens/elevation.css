@@ -1,0 +1,33 @@
+/* ============================================================
+   Lull — Elevation & motion
+   Soft, calm shadows only. No harsh dark drops.
+   ============================================================ */
+
+:root {
+  /* Elevation 0 — flush surfaces, hairline separation only */
+  --elevation-0: none;
+
+  /* Elevation 1 — cards resting on the background */
+  --elevation-1:
+    0 1px 2px rgba(13, 92, 117, 0.04),
+    0 4px 12px rgba(13, 92, 117, 0.06);
+
+  /* Elevation 2 — modals, FABs, popovers */
+  --elevation-2:
+    0 2px 6px rgba(13, 92, 117, 0.08),
+    0 12px 28px rgba(13, 92, 117, 0.12);
+
+  /* Accent glow — used sparingly under coral FABs / surge chips */
+  --elevation-accent: 0 8px 20px rgba(255, 126, 103, 0.30);
+
+  /* Focus ring */
+  --ring: 0 0 0 3px rgba(46, 141, 171, 0.35);
+
+  /* Motion — gentle, spa-like easing. No bounces. */
+  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1); /* @kind other */
+  --ease-out:      cubic-bezier(0.0, 0.0, 0.2, 1); /* @kind other */
+  --ease-in:       cubic-bezier(0.4, 0.0, 1, 1); /* @kind other */
+  --duration-fast: 120ms; /* @kind other */
+  --duration-base: 200ms; /* @kind other */
+  --duration-slow: 320ms; /* @kind other */
+}

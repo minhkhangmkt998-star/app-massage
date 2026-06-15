@@ -1,0 +1,229 @@
+/* ============================================================
+   Lull — Component styles
+   Thin React components apply these classes; all visual state
+   (hover / press / focus / disabled) lives here so it ships
+   to consumers via styles.css.
+   ============================================================ */
+
+/* ---------------- Button ---------------------------------- */
+.lull-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  height: var(--control-height);
+  min-height: var(--control-height);
+  padding: 0 var(--space-lg);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-1);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+.lull-btn:focus-visible { outline: none; box-shadow: var(--ring); }
+.lull-btn:active { transform: scale(0.97); }
+.lull-btn--sm { height: var(--control-height-sm); min-height: var(--control-height-sm); padding: 0 var(--space-md); font-size: var(--text-body-2); }
+.lull-btn--lg { height: 56px; min-height: 56px; font-size: var(--text-body-1); }
+.lull-btn--block { width: 100%; }
+.lull-btn svg { width: 1.2em; height: 1.2em; }
+
+.lull-btn--primary { background: var(--color-primary); color: var(--color-on-primary); }
+.lull-btn--primary:hover { background: var(--color-primary-hover); }
+.lull-btn--primary:active { background: var(--color-primary-press); }
+
+.lull-btn--accent { background: var(--color-accent); color: var(--color-on-accent); }
+.lull-btn--accent:hover { background: var(--color-accent-hover); }
+.lull-btn--accent:active { background: var(--color-accent-press); }
+
+.lull-btn--secondary { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+.lull-btn--secondary:hover { background: var(--color-primary-soft); }
+.lull-btn--secondary:active { background: var(--color-primary-tint); }
+
+.lull-btn--ghost { background: transparent; color: var(--color-primary); }
+.lull-btn--ghost:hover { background: var(--color-primary-soft); }
+
+.lull-btn--danger { background: var(--color-error); color: #fff; }
+.lull-btn--danger:hover { background: var(--color-error-hover); }
+
+.lull-btn:disabled, .lull-btn[aria-disabled="true"] {
+  background: var(--color-disabled-bg);
+  color: var(--color-disabled-fg);
+  border-color: transparent;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.lull-btn--secondary:disabled, .lull-btn--ghost:disabled {
+  background: transparent;
+  color: var(--color-disabled-fg);
+}
+
+/* ---------------- Icon button ----------------------------- */
+.lull-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-target-min);
+  height: var(--tap-target-min);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+.lull-iconbtn:hover { background: var(--color-primary-soft); }
+.lull-iconbtn:active { transform: scale(0.92); }
+.lull-iconbtn:focus-visible { outline: none; box-shadow: var(--ring); }
+.lull-iconbtn--round { border-radius: var(--radius-full); }
+.lull-iconbtn--filled { background: var(--color-primary); color: #fff; }
+.lull-iconbtn--filled:hover { background: var(--color-primary-hover); }
+.lull-iconbtn svg { width: 22px; height: 22px; }
+
+/* ---------------- Field / Input --------------------------- */
+.lull-field { display: flex; flex-direction: column; gap: var(--space-sm); }
+.lull-field__label { font-size: var(--text-body-2); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.lull-field__control {
+  display: flex; align-items: center; gap: var(--space-sm);
+  height: var(--control-height);
+  padding: 0 var(--space-md);
+  background: var(--surface-sunken);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+.lull-field__control:focus-within { background: var(--surface); border-color: var(--color-primary); box-shadow: var(--ring); }
+.lull-field__control svg { width: 20px; height: 20px; color: var(--text-tertiary); flex: none; }
+.lull-input {
+  flex: 1; min-width: 0;
+  border: none; background: transparent; outline: none;
+  font-family: var(--font-sans); font-size: var(--text-body-1); color: var(--text-primary);
+}
+.lull-input::placeholder { color: var(--text-tertiary); }
+.lull-field--error .lull-field__control { background: var(--surface); border-color: var(--color-error); }
+.lull-field--error .lull-field__control:focus-within { box-shadow: 0 0 0 3px rgba(224,62,78,0.30); }
+.lull-field__hint { font-size: var(--text-caption); color: var(--text-secondary); }
+.lull-field--error .lull-field__hint { color: var(--color-error); }
+.lull-field__control[aria-disabled="true"], .lull-input:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ---------------- Chip / Tag ------------------------------ */
+.lull-chip {
+  display: inline-flex; align-items: center; gap: var(--space-xs);
+  height: 36px; padding: 0 var(--space-md);
+  background: var(--surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-body-2); font-weight: var(--weight-medium);
+  color: var(--text-primary); cursor: pointer; user-select: none;
+  transition: background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard);
+}
+.lull-chip:hover { border-color: var(--color-primary); }
+.lull-chip svg { width: 16px; height: 16px; }
+.lull-chip[aria-pressed="true"], .lull-chip--selected {
+  background: var(--color-primary); border-color: var(--color-primary); color: #fff;
+}
+.lull-chip--static { cursor: default; }
+.lull-chip--static:hover { border-color: var(--color-border); }
+
+/* ---------------- Badge ----------------------------------- */
+.lull-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px var(--space-sm); border-radius: var(--radius-pill);
+  font-size: var(--text-caption); font-weight: var(--weight-bold);
+  line-height: 1.4; white-space: nowrap;
+}
+.lull-badge--neutral { background: var(--gray-100); color: var(--text-secondary); }
+.lull-badge--primary { background: var(--color-primary-tint); color: var(--teal-800); }
+.lull-badge--accent  { background: var(--coral-100); color: var(--coral-700); }
+.lull-badge--success { background: var(--color-success-soft); color: var(--mint-600); }
+.lull-badge--warning { background: var(--color-warning-soft); color: var(--amber-600); }
+.lull-badge--error   { background: var(--color-error-soft); color: var(--crimson-600); }
+.lull-badge--solid-accent { background: var(--color-accent); color: #fff; }
+.lull-badge__dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* Count badge (notifications) */
+.lull-count {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px; height: 18px; padding: 0 5px;
+  background: var(--color-accent); color: #fff;
+  font-size: 11px; font-weight: var(--weight-bold);
+  border-radius: var(--radius-pill); line-height: 1;
+}
+
+/* ---------------- Avatar ---------------------------------- */
+.lull-avatar {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-full); overflow: visible;
+  background: var(--color-primary-tint); color: var(--teal-800);
+  font-weight: var(--weight-bold); flex: none;
+}
+.lull-avatar > img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.lull-avatar--sm { width: 32px; height: 32px; font-size: 12px; }
+.lull-avatar--md { width: 44px; height: 44px; font-size: 15px; }
+.lull-avatar--lg { width: 64px; height: 64px; font-size: 22px; }
+.lull-avatar__status {
+  position: absolute; right: -1px; bottom: -1px;
+  width: 28%; height: 28%; min-width: 9px; min-height: 9px;
+  border-radius: 50%; border: 2px solid var(--surface); background: var(--gray-400);
+}
+.lull-avatar__status--online { background: var(--color-success); }
+.lull-avatar__status--busy { background: var(--color-warning); }
+
+/* ---------------- Card ------------------------------------ */
+.lull-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elevation-1);
+  padding: var(--space-lg);
+}
+.lull-card--flush { padding: 0; overflow: hidden; }
+.lull-card--interactive { cursor: pointer; transition: transform var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard); }
+.lull-card--interactive:hover { transform: translateY(-2px); box-shadow: var(--elevation-2); }
+.lull-card--interactive:active { transform: translateY(0); }
+
+/* ---------------- Switch ---------------------------------- */
+.lull-switch { position: relative; display: inline-flex; align-items: center; cursor: pointer; }
+.lull-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.lull-switch__track {
+  width: 44px; height: 26px; border-radius: var(--radius-pill);
+  background: var(--gray-400); transition: background var(--duration-base) var(--ease-standard);
+}
+.lull-switch__thumb {
+  position: absolute; left: 3px; top: 3px; width: 20px; height: 20px;
+  border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+.lull-switch input:checked + .lull-switch__track { background: var(--color-primary); }
+.lull-switch input:checked ~ .lull-switch__thumb { transform: translateX(18px); }
+.lull-switch input:focus-visible + .lull-switch__track { box-shadow: var(--ring); }
+
+/* ---------------- Bottom navigation ----------------------- */
+.lull-bottomnav {
+  display: flex; align-items: stretch;
+  height: var(--bottom-nav-height);
+  background: var(--surface);
+  border-top: 1px solid var(--color-border);
+  padding: 0 var(--space-sm);
+}
+.lull-bottomnav__item {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; border: none; background: transparent; cursor: pointer;
+  color: var(--text-tertiary); font-family: var(--font-sans);
+  font-size: var(--text-caption); font-weight: var(--weight-medium);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.lull-bottomnav__item svg { width: 24px; height: 24px; }
+.lull-bottomnav__item--active { color: var(--color-primary); font-weight: var(--weight-semibold); }

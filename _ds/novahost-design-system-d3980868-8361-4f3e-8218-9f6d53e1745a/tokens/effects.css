@@ -1,0 +1,41 @@
+/* NovaHost — Radii, borders, shadows, motion.
+ * Soft purple-tinted shadows on white; generously rounded cards. */
+:root {
+  /* Corner radii */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-pill: 999px;
+
+  /* Border widths */
+  --border-width: 1px;
+  --border-width-2: 1.5px;
+
+  /* Shadows — cool purple-tinted, soft */
+  --shadow-xs: 0 1px 2px rgba(31, 17, 71, 0.06);
+  --shadow-sm: 0 2px 6px rgba(31, 17, 71, 0.07);
+  --shadow-md: 0 6px 18px rgba(31, 17, 71, 0.09);
+  --shadow-lg: 0 14px 34px rgba(31, 17, 71, 0.12);
+  --shadow-xl: 0 28px 60px rgba(31, 17, 71, 0.16);
+  --shadow-brand: 0 12px 28px rgba(103, 61, 230, 0.30);
+  --shadow-brand-sm: 0 4px 12px rgba(103, 61, 230, 0.24);
+
+  /* Inset / inner */
+  --shadow-inset: inset 0 1px 2px rgba(31, 17, 71, 0.08);
+
+  /* Motion */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);   /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);  /* @kind other */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  --dur-fast:   120ms;  /* @kind other */
+  --dur-base:   200ms;  /* @kind other */
+  --dur-slow:   320ms;  /* @kind other */
+
+  /* Gradients (marketing accents) */
+  --gradient-brand: linear-gradient(135deg, #7B4DF0 0%, #673DE6 45%, #5630CE 100%); /* @kind color */
+  --gradient-hero:  radial-gradient(120% 120% at 80% 0%, #3A2585 0%, #2F1C6A 45%, #1E1147 100%); /* @kind color */
+  --gradient-soft:  linear-gradient(180deg, #F4F1FE 0%, #FFFFFF 100%); /* @kind color */
+}

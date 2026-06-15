@@ -1,0 +1,111 @@
+/* NovaHost — Color tokens
+ * Inspired by the Hostinger palette: royal purple on deep "meteorite" navy,
+ * cool neutrals, friendly semantic accents. Original recreation. */
+:root {
+  /* ---- Brand purple scale ---- */
+  --purple-50:  #F4F1FE;
+  --purple-100: #EBE5FC;
+  --purple-200: #D6C8F9;
+  --purple-300: #B9A3F2;
+  --purple-400: #9479EB;
+  --purple-500: #673DE6;  /* primary / royal purple */
+  --purple-600: #5630CE;
+  --purple-700: #45269F;
+  --purple-800: #2F1C6A;  /* meteorite — headings, dark surfaces */
+  --purple-900: #1E1147;
+  --purple-950: #140B30;
+
+  /* ---- Cool neutral scale ---- */
+  --gray-0:   #FFFFFF;
+  --gray-50:  #FAFAFD;
+  --gray-100: #F3F3F8;
+  --gray-200: #E8E8F0;
+  --gray-300: #D6D6E1;
+  --gray-400: #AEAEC0;
+  --gray-500: #7E7E96;
+  --gray-600: #5C5C73;
+  --gray-700: #3F3F52;
+  --gray-800: #272735;
+  --gray-900: #16161F;
+
+  /* ---- Semantic accents ---- */
+  --green-50:  #E6F7EF;
+  --green-100: #C2EBD8;
+  --green-500: #18A957;  /* success */
+  --green-600: #128043;
+
+  --red-50:    #FDECEA;
+  --red-100:   #F9CFCB;
+  --red-500:   #E5402C;  /* danger / error */
+  --red-600:   #BC2C1C;
+
+  --amber-50:  #FFF6E5;
+  --amber-100: #FCE7BB;
+  --amber-500: #F5A623;  /* warning */
+  --amber-600: #C97F10;
+
+  --blue-50:   #E9F1FE;
+  --blue-100:  #C7DBFB;
+  --blue-500:  #2F7DF6;  /* info */
+  --blue-600:  #1B5FCE;
+
+  /* Decorative accent (used sparingly in marketing) */
+  --mint-400:  #36D6A0;
+  --coral-400: #FF7A59;
+  --sun-400:   #FFC857;
+
+  /* ======================================================
+     Semantic aliases — reach for these in components
+     ====================================================== */
+
+  /* Brand */
+  --brand:            var(--purple-500);
+  --brand-hover:      var(--purple-600);
+  --brand-active:     var(--purple-700);
+  --brand-subtle:     var(--purple-50);
+  --brand-subtle-2:   var(--purple-100);
+  --brand-on:         #FFFFFF;
+  --brand-ink:        var(--purple-800);   /* dark purple text */
+
+  /* Text */
+  --text-strong:   var(--purple-900);
+  --text-heading:  var(--purple-800);
+  --text-body:     var(--gray-700);
+  --text-muted:    var(--gray-500);
+  --text-disabled: var(--gray-400);
+  --text-on-dark:  #FFFFFF;
+  --text-on-dark-muted: #C3BBE6;
+  --text-link:     var(--purple-500);
+
+  /* Surfaces */
+  --surface-page:    var(--gray-50);
+  --surface-card:    var(--gray-0);
+  --surface-sunken:  var(--gray-100);
+  --surface-subtle:  var(--purple-50);
+  --surface-inverse: var(--purple-800);
+  --surface-inverse-2: var(--purple-900);
+  --surface-hover:   var(--gray-100);
+
+  /* Borders */
+  --border:        var(--gray-200);
+  --border-strong: var(--gray-300);
+  --border-brand:  var(--purple-300);
+  --border-focus:  var(--purple-500);
+
+  /* Semantic surfaces + ink */
+  --success:        var(--green-500);
+  --success-ink:    var(--green-600);
+  --success-subtle: var(--green-50);
+  --danger:         var(--red-500);
+  --danger-ink:     var(--red-600);
+  --danger-subtle:  var(--red-50);
+  --warning:        var(--amber-500);
+  --warning-ink:    var(--amber-600);
+  --warning-subtle: var(--amber-50);
+  --info:           var(--blue-500);
+  --info-ink:       var(--blue-600);
+  --info-subtle:    var(--blue-50);
+
+  /* Focus ring */
+  --ring: 0 0 0 4px rgba(103, 61, 230, 0.28);
+}

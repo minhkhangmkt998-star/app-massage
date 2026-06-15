@@ -1,0 +1,37 @@
+/* ============================================================
+   Lull — Typography tokens
+   Type ramp per spec. Plus Jakarta Sans throughout.
+   Sizes use px to mirror the native app spec exactly.
+   ============================================================ */
+
+:root {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, system-ui, sans-serif;
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-extrabold:800;
+
+  /* Size ramp (native app spec) */
+  --text-display: 24px; /* H1 — app headers, big earnings numbers */
+  --text-h2:      20px; /* Section titles */
+  --text-body-1:  16px; /* Primary body */
+  --text-body-2:  14px; /* Secondary body, metadata */
+  --text-caption: 12px; /* Tab labels, tags, timestamps */
+
+  /* A larger marketing display step for hero numbers / web */
+  --text-hero:    40px;
+
+  /* Line heights */
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.5;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em; /* caption / overline */
+}
