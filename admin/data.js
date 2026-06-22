@@ -93,6 +93,45 @@
     { id: "k12", name: "Trịnh Văn Hải",  tier: "Bronze", rating: 3.9, sessions: 88,  accept: 0.58, status: "closed", x: 52, y: 36, svc: ["sports"],          badges: [], closedAt: "02/06/2026", closedReason: "Vi phạm chính sách an toàn — 2 cảnh báo SOS" },
     { id: "k13", name: "Mai Thanh Tùng",  tier: "Silver", rating: 4.1, sessions: 203, accept: 0.64, status: "closed", x: 38, y: 24, svc: ["swedish","foot"], badges: [], closedAt: "21/05/2026", closedReason: "KTV chủ động ngừng hợp tác" },
   ];
+
+  // ---- Generate ~3,200 synthetic KTV (Gaussian, centred on Q1) -----------
+  (function() {
+    const _last  = ["Nguyễn","Trần","Lê","Phạm","Hoàng","Huỳnh","Phan","Vũ","Võ","Đặng","Bùi","Đỗ","Hồ","Ngô","Dương","Lý"];
+    const _mid   = ["Thị","Văn","Thành","Minh","Quốc","Hoài","Anh","Hữu","Kim","Thanh","Ngọc","Đức","Bảo","Trung","Thu","Xuân"];
+    const _given = ["Hà","Lan","Mai","Linh","Ngân","Trang","Hương","Yến","Dung","Thảo","Hoa","Ly","Phương","Vy","Tú","Nam","Hùng","Tuấn","Dũng","Khoa","Quân","Bình","Long","Tùng","Khang","Huy","Đạt","Phúc"];
+    const _svcAll= ["deep","swedish","thai","hot","sports","foot"];
+    const _tiers = ["Bronze","Bronze","Bronze","Silver","Silver","Gold","Elite"];
+    const _bAdj  = ["Đúng giờ","Vệ sinh 5★","Khách quay lại cao","Chứng chỉ nghề"];
+    const _statW = [{s:"online",w:57},{s:"busy",w:30},{s:"offline",w:13}];
+
+    let h = 2166136261;
+    const rng = () => { h += 0x6D2B79F5; let t=h; t=Math.imul(t^(t>>>15),t|1); t^=t+Math.imul(t^(t>>>7),t|61); return((t^(t>>>14))>>>0)/4294967296; };
+    const gauss = () => { let u=0,v=0; while(!u)u=rng(); while(!v)v=rng(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); };
+    const pick  = (arr) => arr[Math.floor(rng()*arr.length)];
+    const clamp = (v,lo,hi) => Math.max(lo,Math.min(hi,v));
+
+    const TOTAL = 3200;
+    for (let i = 0; i < TOTAL; i++) {
+      const id = "kg" + (i + 1);
+      const name = pick(_last) + " " + pick(_mid) + " " + pick(_given);
+      // Gaussian centred on x=50,y=48 (inner HCM), σ≈18 so pins thin out to edges
+      const x = clamp(Math.round(50 + gauss() * 18), 2, 98);
+      const y = clamp(Math.round(48 + gauss() * 18), 2, 98);
+      const tier = pick(_tiers);
+      const r = rng();
+      const status = r < 0.57 ? "online" : r < 0.87 ? "busy" : "offline";
+      const rating = parseFloat((3.8 + rng() * 1.15).toFixed(2));
+      const sessions = Math.floor(rng() * 800);
+      const accept  = parseFloat((0.55 + rng() * 0.42).toFixed(2));
+      const svcCount = 1 + Math.floor(rng() * 2);
+      const svc = [];
+      const pool = [..._svcAll];
+      for (let s=0;s<svcCount;s++) { const idx=Math.floor(rng()*pool.length); svc.push(pool.splice(idx,1)[0]); }
+      const badges = rng() < 0.3 ? [pick(_bAdj)] : [];
+      KTV.push({ id, name, tier, rating, sessions, accept, status, x, y, svc, badges });
+    }
+  })();
+
   const ktvById = (id) => KTV.find((k) => k.id === id);
 
   // ---- Trạng thái KTV (gom nhóm) --------------------------
