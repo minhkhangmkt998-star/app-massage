@@ -106,7 +106,7 @@ function LiveMap({ bookings, selectedId, onSelectBooking }) {
 
         {/* Tile style switcher — top RIGHT to avoid zoom controls */}
         <div style={{
-          position: "absolute", top: 10, right: 10, zIndex: 1000,
+          position: "absolute", bottom: 10, left: 10, zIndex: 1000,
           display: "flex", gap: 6, flexDirection: "row",
         }}>
           {Object.entries(TILES).map(([key, t]) => (
