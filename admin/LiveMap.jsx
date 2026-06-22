@@ -37,7 +37,8 @@ function LiveMap({ bookings, selectedId, onSelectBooking }) {
   // Init map once
   React.useEffect(() => {
     if (leaflet.current || !mapRef.current) return;
-    const map = L.map(mapRef.current, { zoomControl: true }).setView([10.78, 106.70], 13);
+    const renderer = L.canvas({ padding: 0.5 });
+    const map = L.map(mapRef.current, { zoomControl: true, preferCanvas: true, renderer }).setView([10.78, 106.70], 13);
     const t = TILES.voyager;
     const tileLayer = L.tileLayer(t.url, { attribution: t.attr, subdomains: t.sub, maxZoom: 19 }).addTo(map);
     leaflet.current = { map, tileLayer, markers: [] };
@@ -61,16 +62,24 @@ function LiveMap({ bookings, selectedId, onSelectBooking }) {
     leaflet.current.markers.forEach((m) => m.remove());
     leaflet.current.markers = [];
 
-    // KTV markers
+    // KTV markers — named 13 dùng divIcon, generated dùng circleMarker (canvas, nhanh)
     KTV.filter((k) => k.status !== "offline").forEach((k) => {
-      const color = k.status === "busy" ? "#6B7280" : "#0D9488";
-      const icon = L.divIcon({
-        className: "",
-        html: `<div style="width:28px;height:28px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">${k.name.split(" ").slice(-1)[0][0]}</div>`,
-        iconSize: [28, 28],
-        iconAnchor: [14, 14],
-      });
-      const m = L.marker(toLatLng(k.x, k.y), { icon }).addTo(map).bindPopup(k.name);
+      const color = k.status === "busy" ? "#F59E0B" : "#10B981";
+      const isNamed = !k.id.startsWith("kg");
+      let m;
+      if (isNamed) {
+        const icon = L.divIcon({
+          className: "",
+          html: `<div style="width:26px;height:26px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">${k.name.split(" ").slice(-1)[0][0]}</div>`,
+          iconSize: [26, 26], iconAnchor: [13, 13],
+        });
+        m = L.marker(toLatLng(k.x, k.y), { icon }).addTo(map).bindPopup(k.name);
+      } else {
+        m = L.circleMarker(toLatLng(k.x, k.y), {
+          radius: 5, fillColor: color, color: "#fff",
+          weight: 1, fillOpacity: 0.85, opacity: 1,
+        }).addTo(map);
+      }
       leaflet.current.markers.push(m);
     });
 
