@@ -1083,6 +1083,8 @@ button { font-family: inherit; }
 .route-view {
   flex: 1;
   min-height: 0;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
   animation: route-in 0.18s ease-out both;
 }

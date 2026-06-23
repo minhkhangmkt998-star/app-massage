@@ -313,27 +313,29 @@ function App() {
     kyc: { t: "Duyệt KYC", s: null },
     sos: { t: "An toàn / SOS", s: null },
     surge: { t: "Surge & Giá", s: null },
+    customers: { t: "Khách hàng", s: "Hồ sơ & lịch sử giao dịch khách hàng" },
     finance: { t: "Tài chính & Đối soát", s: "Dòng tiền · doanh thu · payout KTV" },
   };
 
-  const renderMain = () => {
-    if (route === "dispatch" || route === "bookings") {
-      return (
-        <div className={"dispatch" + (t.mapSide === "left" ? " dispatch--mapleft" : "")}>
-          <div className="dispatch__inner">
-            <window.ExceptionAlertBar bookings={bookings} onShow={() => setRoute("exceptions")} />
-            <window.StatStrip bookings={bookings} filter={statFilter} onFilter={setStatFilter} />
-            <window.QueueColumn
-              bookings={bookings}
-              statFilter={statFilter} onStatFilter={setStatFilter}
-              chipFilter={chipFilter} onChipFilter={setChipFilter}
-              selectedId={selId} onSelect={setSelId} autopilot={autopilot}
-            />
-            <window.LiveMap bookings={bookings} selectedId={selId} onSelectBooking={setSelId} />
-          </div>
-        </div>
-      );
-    }
+  const isDispatch = route === "dispatch" || route === "bookings";
+
+  const renderDispatch = () => (
+    <div className={"dispatch" + (t.mapSide === "left" ? " dispatch--mapleft" : "")}>
+      <div className="dispatch__inner">
+        <window.ExceptionAlertBar bookings={bookings} onShow={() => setRoute("exceptions")} />
+        <window.StatStrip bookings={bookings} filter={statFilter} onFilter={setStatFilter} />
+        <window.QueueColumn
+          bookings={bookings}
+          statFilter={statFilter} onStatFilter={setStatFilter}
+          chipFilter={chipFilter} onChipFilter={setChipFilter}
+          selectedId={selId} onSelect={setSelId} autopilot={autopilot}
+        />
+        <window.LiveMap bookings={bookings} selectedId={selId} onSelectBooking={setSelId} />
+      </div>
+    </div>
+  );
+
+  const renderPage = () => {
     if (route === "matching") return <window.MatchingLogicPage />;
     if (route === "exceptions") return <window.ExceptionsPage bookings={bookings} onSelect={setSelId} onResolve={handlers.resolve} onHold={handlers.holdAi} autopilot={autopilot} onToggleAuto={toggleAuto} aiHandled={aiHandled} />;
     if (route === "ktv") return <window.KtvNetworkPage />;
@@ -377,7 +379,10 @@ function App() {
           lang={lang} onLang={changeLang}
           clock={clock.toLocaleTimeString(localeTag, { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
         />
-        <div key={route} className="route-view">{renderMain()}</div>
+        {isDispatch
+          ? renderDispatch()
+          : <div key={route} className="route-view">{renderPage()}</div>
+        }
         <window.StatusBar
           route={route} counts={counts} onlineKtv={onlineKtv}
           autopilot={autopilot} toggleAuto={toggleAuto}
