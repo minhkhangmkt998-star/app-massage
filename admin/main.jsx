@@ -377,7 +377,7 @@ function App() {
           lang={lang} onLang={changeLang}
           clock={clock.toLocaleTimeString(localeTag, { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
         />
-        {renderMain()}
+        <div key={route} className="route-view">{renderMain()}</div>
         <window.StatusBar
           route={route} counts={counts} onlineKtv={onlineKtv}
           autopilot={autopilot} toggleAuto={toggleAuto}
